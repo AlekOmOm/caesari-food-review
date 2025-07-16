@@ -1,12 +1,8 @@
-# Reload - Falafel Dish
-
-**Date:** 2025-07-16  
-**Place:** Reload  
-**Dish:** Falafel dish  
-**Rating:** 7.5/10  
-
-## Notes
-*Comment pending*
+place: Reload
+dish: Falafel dish
+rating: 7.5
+reviewer: william
+comment:
 
 ---
-*Review #001*
+*Review #001 - July 16, 2025*
