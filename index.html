@@ -289,6 +289,9 @@
                     <div class="stat-label">Reviewers</div>
                 </div>
             </div>
+            <div class="add-review-btn">
+                <a href="https://github.com/AlekOmOm/caesari_food-review/blob/main/guide/add-review.md" target="_blank" rel="noopener noreferrer" class="button">add review</a>
+            </div>
         </header>
 
         <div class="rating-scale">
@@ -506,21 +509,14 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
             }
-
-            addReview(reviewData) {
-                this.reviews.push({
-                    id: this.reviews.length + 1,
-                    ...reviewData
-                });
-                this.organizeByCategory();
-                this.renderReviews();
-                this.updateStats();
-            }
         }
+
 
         document.addEventListener('DOMContentLoaded', () => {
             new FoodReviewApp();
         });
+
+
     </script>
 </body>
 </html>

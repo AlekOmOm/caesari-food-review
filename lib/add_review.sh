@@ -89,32 +89,38 @@ while true; do
     esac
 done
 
-filename="reviews/${date}_$(echo "$place" | tr '[:upper:]' '[:lower:]' | tr ' ' '_')_$(echo "$dish" | tr '[:upper:]' '[:lower:]' | tr ' ' '_').md"
+export PLACE="$place"
+export DISH="$dish"
+export RATING="$rating"
+export REVIEWER="$reviewer"
+export COMMENT="$comment"
+export DATE="$date"
+export CATEGORY="$category"
 
-cat > "$filename" << EOF
-place: $place
-dish: $dish
-rating: $rating
-reviewer: $reviewer
-comment: $comment
-category: $category
+node - <<'NODE'
+const fs=require('fs');
+const path=require('path');
+const file=path.resolve(process.cwd(),'reviews.js');
+let reviews=[];
+if(fs.existsSync(file)){
+  const txt=fs.readFileSync(file,'utf-8').trim();
+  const match=txt.match(/\[.*\]/s);
+  if(match)reviews=JSON.parse(match[0]);
+}
+const nextId=reviews.length?Math.max(...reviews.map(r=>r.id||0))+1:1;
+reviews.push({
+  place:process.env.PLACE,
+  dish:process.env.DISH,
+  rating:parseFloat(process.env.RATING),
+  reviewer:process.env.REVIEWER,
+  comment:process.env.COMMENT,
+  category:process.env.CATEGORY,
+  date:process.env.DATE,
+  id:nextId
+});
+fs.writeFileSync(file,`window.REVIEWS = ${JSON.stringify(reviews,null,2)};`);
+NODE
 
----
-*Review added on $(date '+%B %d, %Y')*
-EOF
-
-print_colored $GREEN "✓ Review saved to: $filename"
-echo
-
-read -p "$(print_colored $YELLOW "Add to git and push to GitHub? (y/n): ")" git_choice
-if [[ $git_choice =~ ^[Yy]$ ]]; then
-    git add "$filename"
-    git commit -m "Add review: $place - $dish ($rating/10)"
-    git push
-    print_colored $GREEN "✓ Review pushed to GitHub!"
-else
-    print_colored $YELLOW "Review saved locally. Remember to commit and push manually."
-fi
-
-print_colored $YELLOW "Note: You'll need to manually update the index.html file with the new review data"
+print_colored $GREEN "✓ Review added to reviews.js"
+print_colored $YELLOW "view it at: https://caesari-food-review.vercel.app/"
 print_colored $GREEN "Review entry complete! 🎉"

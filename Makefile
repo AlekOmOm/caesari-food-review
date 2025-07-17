@@ -17,12 +17,14 @@ help:
 
 # Add new review interactively
 add:
-	@chmod +x add_review.sh
-	@./add_review.sh
+	@chmod +x lib/add_review.sh
+	@./lib/add_review.sh
+	@git add reviews.js
+	@git commit -m "Add new review"
+	@git push
 
 # Run the static HTML site
 view:
-	@node build_reviews.js
 	@echo "Opening food reviews site..."
 	@open index.html
 
