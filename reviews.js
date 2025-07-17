@@ -16,5 +16,15 @@ window.REVIEWS = [
     "comment": "",
     "date": "2025-07-17",
     "id": 2
+  },
+  {
+    "place": "test2",
+    "dish": "ttes",
+    "rating": 4,
+    "reviewer": "alek",
+    "comment": "",
+    "category": "street-food",
+    "date": "2025-07-17",
+    "id": 3
   }
 ];
