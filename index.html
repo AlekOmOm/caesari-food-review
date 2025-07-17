@@ -344,6 +344,7 @@
         </div>
     </div>
 
+    <script src="reviews.js"></script>
     <script>
         class FoodReviewApp {
             constructor() {
@@ -367,30 +368,7 @@
             }
 
             async loadReviews() {
-                // Updated with both reviews
-                this.reviews = [
-                    {
-                        id: 1,
-                        date: '2025-07-16',
-                        place: 'Reload',
-                        dish: 'Falafel dish',
-                        rating: 7.5,
-                        reviewer: 'william',
-                        comment: '',
-                        category: 'casual-dining'
-                    },
-                    {
-                        id: 2,
-                        date: '2025-07-17',
-                        place: 'Suncalo',
-                        dish: 'Burrito',
-                        rating: 6.5,
-                        reviewer: 'william',
-                        comment: '',
-                        category: 'casual-dining'
-                    }
-                ];
-                
+                this.reviews = window.REVIEWS || [];
                 this.organizeByCategory();
             }
 
@@ -419,12 +397,12 @@
             }
 
             setupReviewerFilters() {
-                const reviewers = [...new Set(this.reviews.map(r => r.reviewer))];
+                const reviewers = ['all', ...new Set(this.reviews.map(r => r.reviewer))];
                 const container = document.getElementById('reviewerFilters');
                 
                 container.innerHTML = reviewers.map(reviewer => 
                     `<button class="reviewer-btn ${reviewer === 'all' ? 'active' : ''}" data-reviewer="${reviewer}">
-                        ${reviewer}
+                        ${reviewer === 'all' ? 'All' : reviewer}
                     </button>`
                 ).join('');
                 

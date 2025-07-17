@@ -17,6 +17,7 @@ add:
 
 # Run the static HTML site
 view:
+	@node build_reviews.js
 	@echo "Opening food reviews site..."
 	@open index.html
 
