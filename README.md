@@ -3,7 +3,7 @@
 Collaborative culinary journal tracking restaurant experiences by multiple reviewers.
 
 ## Live Site
-Visit the interactive review collection at: https://alekomom.github.io/caesari_food-review/
+Visit the interactive review collection at: https://caesari-food-review.vercel.app/
 
 ## Current Reviews
 - [2025-07-16: Reload - Falafel Dish](reviews/2025-07-16_reload_falafel.md) - 7.5/10 by william
