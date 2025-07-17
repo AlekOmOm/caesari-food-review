@@ -10,7 +10,7 @@ help:
 	@echo "  make help  - Show this help message"
 
 # Run the static HTML site
-run:
+view:
 	@echo "Opening food reviews site..."
 	@open index.html
 
