@@ -16,25 +16,5 @@ window.REVIEWS = [
     "comment": "",
     "date": "2025-07-17",
     "id": 2
-  },
-  {
-    "place": "test",
-    "dish": "test2",
-    "rating": 4,
-    "reviewer": "Alek",
-    "comment": "",
-    "category": "",
-    "date": "2025-07-17",
-    "id": 3
-  },
-  {
-    "place": "test",
-    "dish": "test3",
-    "rating": 8,
-    "reviewer": "Kevin",
-    "comment": "",
-    "category": "street-food",
-    "date": "2025-07-17",
-    "id": 4
   }
 ];
