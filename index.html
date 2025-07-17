@@ -367,10 +367,7 @@
             }
 
             async loadReviews() {
-                // For GitHub Pages deployment, we'll need to fetch from a known structure
-                // This is a simulation - in real deployment, you'd fetch from your review files
-                
-                // Simulated data structure based on your current review
+                // Updated with both reviews
                 this.reviews = [
                     {
                         id: 1,
@@ -381,13 +378,18 @@
                         reviewer: 'william',
                         comment: '',
                         category: 'casual-dining'
+                    },
+                    {
+                        id: 2,
+                        date: '2025-07-17',
+                        place: 'Suncalo',
+                        dish: 'Burrito',
+                        rating: 6.5,
+                        reviewer: 'william',
+                        comment: '',
+                        category: 'casual-dining'
                     }
                 ];
-
-                // In a real implementation, you would:
-                // 1. Fetch directory structure from GitHub API
-                // 2. Parse markdown files
-                // 3. Extract review data
                 
                 this.organizeByCategory();
             }
@@ -527,7 +529,6 @@
                 document.getElementById('error').style.display = 'block';
             }
 
-            // Method to add new review (for future use)
             addReview(reviewData) {
                 this.reviews.push({
                     id: this.reviews.length + 1,
@@ -539,20 +540,9 @@
             }
         }
 
-        // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             new FoodReviewApp();
         });
-
-        // For GitHub Pages integration - you would add this function to parse markdown files
-        async function fetchReviewsFromGitHub() {
-            // This would fetch from your GitHub repository structure
-            // Example: https://api.github.com/repos/username/repo/contents/reviews
-            // Then parse each markdown file to extract review data
-            
-            // Implementation would depend on your exact directory structure
-            // and how you want to organize categories
-        }
     </script>
 </body>
 </html>
