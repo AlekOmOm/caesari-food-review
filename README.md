@@ -5,8 +5,8 @@ Collaborative culinary journal tracking restaurant experiences by multiple revie
 ## Live Site
 Visit the interactive review collection at: https://caesari-food-review.vercel.app/
 
-## Current Reviews
-- [2025-07-16: Reload - Falafel Dish](reviews/2025-07-16_reload_falafel.md) - 7.5/10 by william
+## Contributing
+-> [add review](./guide/add-review.md)
 
 ## Review Format
 Each review follows this structure:
@@ -34,11 +34,6 @@ comment: [Optional detailed comment]
 - Automatic statistics tracking
 - Category organization by subdirectories
 
-## Contributing
-1. Create new review files in `/reviews/` directory
-2. Use date-based naming: `YYYY-MM-DD_place_dish.md`
-3. Follow the standard review format
-4. Organize by category using subdirectories if needed
 
 ---
 *Latest update: July 16, 2025*
