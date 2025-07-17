@@ -1,14 +1,19 @@
 # Caesari Food Reviews Makefile
 
-.PHONY: run edit help add
+.PHONY: run edit help add mkcli-reg
+
+mkcli-reg:
+	mkcli a food .
 
 # Default target
 help:
 	@echo "Available commands:"
 	@echo "  make view   - Open the food reviews site in your default browser"
-	@echo "  make add   - Add a new food review interactively"
-	@echo "  make edit  - Open the project with `code`"
-	@echo "  make help  - Show this help message"
+	@echo "  make add    - Add a new food review interactively"
+	@echo "  make edit   - Open the project with 'code'"
+	@echo "  make help   - Show this help message"
+	@echo " ----------------------------------------"
+	@echo "  make mkcli-reg  - Register the project with mkcli"
 
 # Add new review interactively
 add:
