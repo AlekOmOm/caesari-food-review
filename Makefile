@@ -8,13 +8,12 @@ mkcli-reg:
 	
 # Default target
 help:
-	@echo "Available commands:"
 	@echo " "
-	@echo "  make view   - Open the food reviews site in your default browser"
-	@echo "  make add    - Add a new food review interactively"
+	@echo "  view   - Open the food reviews site in your default browser"
+	@echo "  add    - Add a new food review interactively"
 	@echo " "
 	@echo "  ---"
-	@echo "  make mkcli-reg  - Register the project with mkcli"
+	@echo "  mkcli-reg  - Register the project with mkcli"
 
 # Add new review interactively
 add:
@@ -31,8 +30,8 @@ view:
 	@open index.html
 
 straight-to-prod:
-    @git pull
-	@vercel --prod
+	@git pull
+	@vercel --prod 
 
 edit:
 	@echo "Opening project in VS Code..."
