@@ -25,6 +25,10 @@
 - view reviews by lunchbox
 - view reviews by caesari fridge edible
 
+### MVP extension
+
+1) Lunchbox category
+
 ## tech stack
 
 ### current state
