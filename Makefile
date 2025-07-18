@@ -3,8 +3,9 @@
 .PHONY: run edit help add mkcli-reg
 
 mkcli-reg:
-	mkcli a food .
-
+	@source lib/check-mkcli.sh && check-mkcli
+	@mkcli a food .
+	
 # Default target
 help:
 	@echo "Available commands:"
@@ -17,6 +18,7 @@ help:
 
 # Add new review interactively
 add:
+	@git pull
 	@chmod +x lib/add_review.sh
 	@./lib/add_review.sh
 	@git add reviews.js
@@ -28,17 +30,20 @@ view:
 	@echo "Opening food reviews site..."
 	@open index.html
 
-# Open project in VS Code
+straight-to-prod:
+    @git pull
+	@vercel --prod
+
 edit:
 	@echo "Opening project in VS Code..."
 	@code .
 
 # Alternative run command for different systems
-run-linux:
+view-linux:
 	@echo "Opening food reviews site (Linux)..."
 	@xdg-open index.html
 
-run-windows:
+view-windows:
 	@echo "Opening food reviews site (Windows)..."
 	@start index.html
 
