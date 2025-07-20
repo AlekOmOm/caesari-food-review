@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: Food Review API
+  version: 1.0.0
+paths:
+  /reviews:
+    get:
+      summary: Retrieve a list of food reviews
+      responses:
+        '200':
+          description: A list of reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+    post:
+      summary: Add a new food review
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewReview'
+      responses:
+        '201':
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+  /reviews/{id}:
+    put:
+      summary: Update an existing food review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewReview'
+      responses:
+        '200':
+          description: Review updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+    delete:
+      summary: Delete a food review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Review deleted
+components:
+  schemas:
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+        review:
+          type: object
+          properties:
+            place:
+              type: string
+            dish:
+              type: string
+            rating:
+              type: number
+            reviewer:
+              type: string
+            comment:
+              type: string
+            date:
+              type: string
+              format: date
+            category:
+              type: string
+    NewReview:
+      type: object
+      properties:
+        place:
+          type: string
+        dish:
+          type: string
+        rating:
+          type: number
+        reviewer:
+          type: string
+        comment:
+          type: string
+        date:
+          type: string
+          format: date
+        category:
+          type: string 

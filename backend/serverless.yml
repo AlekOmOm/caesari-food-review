@@ -1,0 +1,62 @@
+service: reviews-api
+
+frameworkVersion: '3.x'
+
+plugins:
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    exclude:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  httpApi:
+    cors: true
+  region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Scan"
+            - "dynamodb:PutItem"
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+          Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.TABLE}"
+  environment:
+    TABLE: reviews
+
+functions:
+  api:
+    handler: handler.api
+    events:
+      - httpApi:
+          path: /reviews
+          method: GET
+      - httpApi:
+          path: /reviews
+          method: POST
+      - httpApi:
+          path: /reviews/{id}
+          method: PUT
+      - httpApi:
+          path: /reviews/{id}
+          method: DELETE
+
+resources:
+  Resources:
+    ReviewsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST 

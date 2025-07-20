@@ -2,50 +2,48 @@
 
 ## vision
 
-- simple singular source of truth for Caesari food reviews
+- frictionless single source of truth for Caesari lunch & dish reviews
+- zero-maintenance, almost zero-cost stack: static UI on Vercel, serverless backend on AWS
+- small but delightful product to learn essential AWS services without changing the current workflow
 
 ## user stories
 
-- as a Caesari employee, i want to add a review
-  - easily and quickly
-     - by CLI (mkcli)
-     - by web interface
-     - by slack command
-- as a Caesari employee, i want to view reviews
-- as a Caesari employee, i want to view reviews by dish
-- as a Caesari employee, i want to view reviews by lunchbox
-- as a Caesari employee, i want to view reviews by sub-categories of dish and lunchbox
+- as a Caesari employee, i want to browse all reviews anonymously
+- as a Caesari employee, i want to filter reviews by dish
+- as a Caesari employee, i want to filter reviews by lunchbox
+- as a Caesari employee, i want to add a review in seconds
+- as a Caesari employee, i want my name to persist between visits without logging in
+- as a Caesari employee, i want to switch user when sharing a device
 
 ## features
 
-- add a review
+- add review (place, dish/lunchbox, rating, comment)
+- lightweight user registry (15 predefined colleagues) picked once and cached in localStorage
+- browse reviews list
+- top toggle filter ( **All / Dish / Lunchbox** ) to instantly switch list mode
+- filter reviews by dish
+- filter reviews by lunchbox
 - categorize review as dish (ordered) or lunchbox (self-brought)
-- view reviews
-- view reviews by dish
-- view reviews by lunchbox
-- view reviews by caesari fridge edible
+- data persisted in DynamoDB and served via REST API
 
 ### MVP extension
 
-1) Lunchbox category
-
 ## tech stack
 
-### current state
+- Plain HTML, CSS, and JavaScript
+- static assets delivered by Vercel edge CDN
+- users registry bundled as `users.json` inside the app
+- API Gateway (HTTP API) → Lambda (Node 20 ESM) → DynamoDB `reviews` table
+- IaC via Serverless Framework, deployed by GitHub Actions
 
-- static HTML site hosted on Vercel
-- reviews generated at build time; new reviews require repository commit
-- no on-site form to add review
+## non-functional requirements
 
-### current limitations
+- p95 latency < 1 s end-to-end
+- infrastructure cost within AWS free tier at ≤1 k req/mo and ≤300 writes/mo
+- user registry modal TTI < 100 ms
 
-- cannot add reviews directly through the website due to static hosting constraints
-- each new review requires a code change and redeployment
-- lunchbox category not yet fully implemented in data model
+## open questions / risks
 
-### (possible) future state
-
-- migrate to a hosting solution that supports serverless functions or a backend (e.g. Vercel Edge Functions, Supabase, etc.)
-- provide authenticated form to submit reviews directly on site
-- store reviews in a persistent database for real-time retrieval
-- fully support lunchbox category alongside dishes
+- upgrade path from "choose-then-trust" to proper auth (e.g., Cognito)
+- static user list public exposure; acceptable for internal use, revisit if public launch
+- clearing browser storage resets chosen user; acceptable edge case

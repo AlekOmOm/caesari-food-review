@@ -1,0 +1,20 @@
+/*
+Colors used in the design.
+
+Background: #1E1E2F
+Main Text: #FFFFFF
+Highlighted Text: #FFA500
+Subtext: #B0B0B0
+Button Background: #FFA500
+Button Text: #1E1E2F
+Accent Elements: #00BFFF
+*/
+:root {
+  --color-background: #1E1E2F;
+  --color-text-main: #FFFFFF;
+  --color-text-highlight: #FFA500;
+  --color-text-sub: #B0B0B0;
+  --color-button-bg: #FFA500;
+  --color-button-text: #1E1E2F;
+  --color-accent: #00BFFF;
+}

@@ -1,39 +1,74 @@
-# Caesari Food Reviews
+# Caesari Food Reviews - Phase 1
 
-Collaborative culinary journal tracking restaurant experiences by multiple reviewers.
+A collaborative food review platform for the Caesari team.
 
-## Live Site
-Visit the interactive review collection at: https://caesari-food-review.vercel.app/
+## Features Implemented (Phase 1)
 
-## Contributing
--> [add review](./guide/add-review.md)
+- ✅ User selection modal with localStorage persistence
+- ✅ Browse reviews with responsive card layout
+- ✅ Add new reviews via modal form
+- ✅ Filter by category (All/Dish/Lunchbox)
+- ✅ Filter by rating (All/High Rated/Recent)
+- ✅ Filter by reviewer
+- ✅ Real-time statistics display
+- ✅ Switch user functionality
+- ✅ Mobile-responsive design
 
-## Review Format
-Each review follows this structure:
+## Getting Started
+
+### Local Development
+
+1. Clone the repository
+2. Open `index.html` in your browser
+3. Select a user from the modal on first visit
+4. Start browsing and adding reviews!
+
+### Project Structure
+
 ```
-place: [Restaurant Name]
-dish: [Dish Description]
-rating: [1-10 scale]
-reviewer: [Reviewer Name]
-comment: [Optional detailed comment]
+food-review/
+├── index.html          # Main application
+├── style.css           # Application styles
+├── app.js              # Basic app entry (minimal)
+├── reviews.js          # Sample review data
+├── lib/
+│   ├── api.js          # Mock API functions (will become real in Phase 2)
+│   ├── users.json      # User registry
+│   └── build_reviews.js # Build script for review data
+├── docs/               # Project documentation
+└── guide/              # User guides
 ```
 
-## Rating Scale
-- **10:** Exceptional, memorable experience
-- **8-9:** Excellent, highly recommended  
-- **7-7.9:** Good, solid choice
-- **6-6.9:** Decent, acceptable
-- **5-5.9:** Average, unremarkable
-- **4-4.9:** Below average, disappointed
-- **1-3:** Poor, avoid
+## Architecture
 
-## Features
-- Interactive HTML interface with filtering
-- Filter by reviewer, rating, or recency
-- Responsive design for all devices
-- Automatic statistics tracking
-- Category organization by subdirectories
+### Current (Phase 1)
+- Static HTML/CSS/JavaScript
+- In-memory data storage
+- localStorage for user persistence
+- Mock API layer for easy transition to Phase 2
 
+### Coming (Phase 2)
+- AWS Lambda + API Gateway backend
+- DynamoDB for persistent storage
+- Real API endpoints
 
----
-*Latest update: July 16, 2025*
+## User Flow
+
+1. **First Visit**: User selection modal appears
+2. **Browse Reviews**: View reviews filtered by category, rating, or reviewer
+3. **Add Review**: Click "Add Review" button to open form modal
+4. **Switch User**: Click "Switch User" to change active user
+
+## Technical Notes
+
+- No build process required - runs directly in browser
+- ES6+ features used (async/await, fetch API)
+- CSS Grid and Flexbox for responsive layouts
+- Mock API layer simulates future AWS integration
+
+## Next Steps (Phase 2)
+
+- Implement AWS Lambda backend
+- Replace mock API with real HTTP calls
+- Add DynamoDB persistence
+- Deploy to production environment 
