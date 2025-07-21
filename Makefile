@@ -1,6 +1,6 @@
 # Caesari Food Reviews Makefile
 
-.PHONY: run edit help add mkcli-reg
+.PHONY: run edit help add mkcli-reg view-local
 
 mkcli-reg:
 	@source lib/check-mkcli.sh && check-mkcli
@@ -20,6 +20,10 @@ help:
 view:
 	@echo "Opening food reviews site..."
 	@open https://caesari-food-review.vercel.app
+
+view-local:
+	@echo "Opening food reviews site..."
+	@cd frontend && open http://localhost:8080 && python3 -m http.server 8080
 
 prod:
 	@cd frontend && vercel --prod --env PUBLIC_API_URL=https://1u5t1vutr1.execute-api.us-east-1.amazonaws.com
