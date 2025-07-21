@@ -1,2 +1,7 @@
 .env
 node_modules/*
+
+# serverless artifacts
+.serverless/
+*.zip
+
