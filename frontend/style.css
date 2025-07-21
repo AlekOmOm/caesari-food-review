@@ -419,3 +419,19 @@ header .subtitle {
 :root {
   --color-accent-transparent: rgba(0, 191, 255, 0.2);
 }
+
+/* ----------------------------------------
+   make #categories own the vertical rhythm
+   ---------------------------------------- */
+#categories{
+    /* override any inline display value that
+       might be set by js → use !important */
+    display:flex !important;     /* vertical by default */
+    flex-direction:column;
+    gap:1rem;                    /* tweak spacing here */
+}
+  
+  /* safety net if you keep display:block */
+.category + .category{
+    margin-top:1rem;
+}

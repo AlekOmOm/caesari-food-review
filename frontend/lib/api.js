@@ -1,5 +1,4 @@
 const API_URL = 'https://1u5t1vutr1.execute-api.us-east-1.amazonaws.com';
-
 // This file will handle API calls.
 
 async function getUsers() {
@@ -39,21 +38,8 @@ const api = {
     async createReview(reviewData) {
         // Alias for addReview for consistency
         return this.addReview(reviewData);
-    },
-
-    async updateReview(id, reviewData) {
-        // For now, just return the updated review
-        // In phase 2, this will PUT to AWS API Gateway
-        await new Promise(resolve => setTimeout(resolve, 100));
-        return { ...reviewData, id };
-    },
-
-    async deleteReview(id) {
-        // For now, just return success
-        // In phase 2, this will DELETE to AWS API Gateway
-        await new Promise(resolve => setTimeout(resolve, 100));
-        return { success: true };
     }
+
 };
 
 // Export for future use

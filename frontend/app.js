@@ -70,7 +70,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         async loadReviews() {
             const rawReviews = await api.listReviews();
-            this.reviews = rawReviews.map(r => ({ ...r.review, id: r.id }));
+            rawReviews.forEach(review => {
+                this.reviews.push({
+                    date: review.date,
+                    reviewer: review.reviewer,
+                    rating: review.rating,
+                    dish: review.dish,
+                    place: review.place,
+                    category: review.category,
+                    comment: review.comment,
+                    id: review.id,
+                });
+            });
             this.organizeByCategory();
         }
 

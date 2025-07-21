@@ -3,6 +3,13 @@
 source "$(dirname "$0")/lib/ui.sh"
 source "$(dirname "$0")/lib/config.sh"
 
+# Check if jq is installed
+if ! command -v jq &> /dev/null
+then
+    print_colored $RED "jq could not be found. Please install jq to run this script."
+    exit 1
+fi
+
 print_colored $BLUE "=== Food Review Entry ==="
 echo
 
@@ -47,7 +54,7 @@ EOF
 
 response=$(curl -s -X POST -H "Content-Type: application/json" -d "$json_payload" "${API_URL}/reviews")
 
-if [[ $(echo "$response" | grep -c "{}") -gt 0 ]]; then
+if echo "$response" | jq -e '.id' >/dev/null 2>&1; then
     print_colored $GREEN "✓ Review added successfully!"
     print_colored $GREEN "Review entry complete! 🎉"
 else

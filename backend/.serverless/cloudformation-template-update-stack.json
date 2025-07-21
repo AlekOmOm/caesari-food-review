@@ -172,7 +172,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/reviews-api/dev/1753052336357-2025-07-20T22:58:56.357Z/reviews-api.zip"
+          "S3Key": "serverless/reviews-api/dev/1753053245478-2025-07-20T23:14:05.478Z/reviews-api.zip"
         },
         "Handler": "handler.api",
         "Runtime": "nodejs20.x",
@@ -195,14 +195,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersion1ifGLGDeIPVuRPwaAjh1O3lw606ZksFYuMY2PT2dZ4": {
+    "ApiLambdaVersionZdIkM9rx45sT1CISqnfk7WnBcPyIaNZQUAc5vaTg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "hkUWBY3DA93zDM6a1MhbbGHxJLijU5lkF07n91pGwbs="
+        "CodeSha256": "3iX3g5lyS1pFbw0UPWWIWJMhfoak6/7n4iKuYfz7Vs8="
       }
     },
     "HttpApi": {
@@ -213,15 +213,9 @@
         "CorsConfiguration": {
           "AllowHeaders": [
             "Content-Type",
-            "X-Amz-Date",
-            "Authorization",
-            "X-Api-Key",
-            "X-Amz-Security-Token",
-            "X-Amz-User-Agent",
-            "X-Amzn-Trace-Id"
+            "Authorization"
           ],
           "AllowMethods": [
-            "OPTIONS",
             "GET",
             "POST",
             "PUT",
@@ -416,7 +410,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersion1ifGLGDeIPVuRPwaAjh1O3lw606ZksFYuMY2PT2dZ4"
+        "Ref": "ApiLambdaVersionZdIkM9rx45sT1CISqnfk7WnBcPyIaNZQUAc5vaTg"
       },
       "Export": {
         "Name": "sls-reviews-api-dev-ApiLambdaFunctionQualifiedArn"

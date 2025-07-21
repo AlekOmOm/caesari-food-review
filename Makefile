@@ -26,7 +26,7 @@ prod:
 
 
 # CLI
-.PHONY: add update delete get
+.PHONY: add update delete get init
 
 ARGS = $(filter-out $@,$(MAKECMDGOALS))
 
@@ -42,6 +42,8 @@ delete:
 get:
 	@cd CLI && ./get_review.sh $(ARGS)
 
+init: # used after redeploy of the backend
+	@cd CLI && ./init_reviews.sh
 
 # backend
 .PHONY: deploy-backend
